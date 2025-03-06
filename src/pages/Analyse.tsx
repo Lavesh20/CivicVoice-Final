@@ -34,7 +34,7 @@ interface Complaint {
     url: string;   
   };   
   department: string;   
-  location: string;   
+  // location: string;   
   name: string;   
   severity: string;   
   summary: string;   
@@ -53,7 +53,7 @@ const SkeletonCard = () => (
 
 interface FilterState {
   departments: string[];
-  locations: string[];
+  // locations: string[];
   platforms: string[];
   severities: string[];
 }
@@ -71,7 +71,7 @@ const Analyse = () => {
   // Filter state
   const [filters, setFilters] = useState<FilterState>({
     departments: [],
-    locations: [],
+    // locations: [],
     platforms: [],
     severities: []
   });
@@ -86,8 +86,8 @@ const Analyse = () => {
       const departmentMatch = filters.departments.length === 0 || 
         filters.departments.includes(complaint.department);
       
-      const locationMatch = filters.locations.length === 0 || 
-        filters.locations.includes(complaint.location);
+      // const locationMatch = filters.locations.length === 0 || 
+      //   filters.locations.includes(complaint.location);
       
       const platformMatch = filters.platforms.length === 0 || 
         filters.platforms.includes(complaint.content_platform);
@@ -95,18 +95,18 @@ const Analyse = () => {
       const severityMatch = filters.severities.length === 0 || 
         filters.severities.includes(complaint.severity);
       
-      return departmentMatch && locationMatch && platformMatch && severityMatch;
+      return departmentMatch && platformMatch && severityMatch;
     });
   }, [complaintsArray, filters]);
 
   // Extract unique values for filter options
   const filterOptions = useMemo(() => {
     const departments = [...new Set(complaintsArray.map(c => c.department))];
-    const locations = [...new Set(complaintsArray.map(c => c.location))];
+    // const locations = [...new Set(complaintsArray.map(c => c.location))];
     const platforms = [...new Set(complaintsArray.map(c => c.content_platform))];
     const severities = [...new Set(complaintsArray.map(c => c.severity))];
     
-    return { departments, locations, platforms, severities };
+    return { departments, platforms, severities };
   }, [complaintsArray]);
 
   // Handle filter changes
@@ -150,7 +150,7 @@ const Analyse = () => {
         {!isLoading && (
           <ComplaintFilter 
             departments={filterOptions.departments}
-            locations={filterOptions.locations}
+            // locations={filterOptions.locations}
             platforms={filterOptions.platforms}
             severities={filterOptions.severities}
             onFilterChange={handleFilterChange}
@@ -173,11 +173,12 @@ const Analyse = () => {
               <DepartmentChart data={getDepartmentStats(filteredComplaints)} />
               <PlatformChart data={getPlatformStats(filteredComplaints)} />
               <LocationMap locations={getLocationStats(filteredComplaints)} />
+              
               {/* <SentimentGauge data={getSentimentStats(filteredComplaints)} /> */}
             </>
           )}
         </div>
-
+        <HeatmapComponent/>
         <div className="analytics-section" style={{ '--delay': 8 } as React.CSSProperties}>
           <div className='flex justify-between'>
             <h2 className="text-xl font-semibold mb-7">Recent Complaints</h2>
@@ -202,10 +203,10 @@ const Analyse = () => {
           </div>
         </div>
       </div>
-      <div>
+      {/* <div>
         <HeatmapComponent/>
 
-      </div>
+      </div> */}
     </div>
   );
 };

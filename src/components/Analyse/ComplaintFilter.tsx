@@ -14,7 +14,7 @@ import { Badge } from '@/components/ui/badge';
 
 interface ComplaintFilterProps {
   departments: string[];
-  locations: string[];
+  // locations: string[];
   platforms: string[];
   severities: string[];
   onFilterChange: (filters: FilterState) => void;
@@ -22,21 +22,21 @@ interface ComplaintFilterProps {
 
 interface FilterState {
   departments: string[];
-  locations: string[];
+  // locations: string[];
   platforms: string[];
   severities: string[];
 }
 
 const ComplaintFilter: React.FC<ComplaintFilterProps> = ({
   departments,
-  locations,
+  // locations,
   platforms,
   severities,
   onFilterChange
 }) => {
   const [filters, setFilters] = useState<FilterState>({
     departments: [],
-    locations: [],
+    // locations: [],
     platforms: [],
     severities: []
   });
@@ -62,7 +62,7 @@ const ComplaintFilter: React.FC<ComplaintFilterProps> = ({
   const clearFilters = () => {
     const emptyFilters = {
       departments: [],
-      locations: [],
+      // locations: [],
       platforms: [],
       severities: []
     };
@@ -116,7 +116,7 @@ const ComplaintFilter: React.FC<ComplaintFilterProps> = ({
       </DropdownMenu>
       
       {/* Location Filter */}
-      <DropdownMenu>
+      {/* <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" size="sm" className="h-8">
             Location
@@ -148,7 +148,7 @@ const ComplaintFilter: React.FC<ComplaintFilterProps> = ({
             ))}
           </DropdownMenuGroup>
         </DropdownMenuContent>
-      </DropdownMenu>
+      </DropdownMenu> */}
       
       {/* Severity Filter */}
       <DropdownMenu>

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import HeatmapComponent from '@/components/HeatmapComponent';
 import { Activity, FileText, AlertTriangle } from 'lucide-react';
 import { Chip } from './chip';
 import { TrendIndicator } from './TrendIndicator';
@@ -20,7 +20,7 @@ const AnalyticsHeader: React.FC<AnalyticsHeaderProps> = ({
   return (
     <>
     <Navbar/>
-    <div className=" mt-8 pt-8 space-y-2 animate-fade-in">
+    <div className=" mt-8 pt-8 space-y-2 animate-fade-in flex  flex-col justify-center items-center">
       <div className="flex items-center space-x-2">
         <Chip>Analytics Dashboard</Chip>
         <span className="text-sm text-muted-foreground">Real-time citizen feedback analysis</span>
@@ -33,10 +33,10 @@ const AnalyticsHeader: React.FC<AnalyticsHeaderProps> = ({
         locations, and platforms to help identify patterns and prioritize responses.
       </p>
       
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pt-6">
-        <div className="glass-card p-4 flex items-center gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 pt-6">
+        <div className="glass-card p-4 flex  justify-center items-center gap-3">
           <div className="rounded-full bg-primary/10 p-3">
-            <FileText className="h-5 w-5 text-primary" />
+            <FileText className="h-5 w-3 text-primary" />
           </div>
           <div>
             <p className="text-sm text-muted-foreground">Total Complaints</p>
@@ -52,7 +52,7 @@ const AnalyticsHeader: React.FC<AnalyticsHeaderProps> = ({
           </div>
         </div>
         
-        <div className="glass-card p-4 flex items-center gap-3">
+        <div className="glass-card p-4 flex  justify-center items-center gap-3">
           <div className="rounded-full bg-chart-blue/10 p-3">
             <Activity className="h-5 w-5 text-chart-blue" />
           </div>
@@ -72,6 +72,9 @@ const AnalyticsHeader: React.FC<AnalyticsHeaderProps> = ({
           </div>
         </div>
       </div>
+     
+      
+      
     </div>
     </>
   );
